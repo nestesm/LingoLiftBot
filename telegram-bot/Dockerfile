@@ -1,0 +1,15 @@
+FROM python:3.11-slim
+
+WORKDIR /opt
+
+ENV TELEGRAM_API_TOKEN="6392596731:AAGGYixVKXq0ku-xnrtkYyMxHGsYCP7ykqI"
+ENV TELEGRAM_ACCESS_ID=""
+ENV TELEGRAM_PROXY_URL=""
+ENV TELEGRAM_PROXY_LOGIN=""
+ENV TELEGRAM_PROXY_PASSWORD=""
+
+COPY . /opt
+
+RUN pip install -r requirements.txt
+
+ENTRYPOINT ["python", "run.py"]

@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  
+  telegram-bot:
+    build: ./telegram-bot
+    container_name: telegram-bot
+    restart: always
+    environment:
+      - BOT_KEY=""
+    expose:
+        - 8080
+    ports:
+      - "443:443" 
+    volumes:
+       - telegram-bot-sync:/opt
+
+
+volumes:
+  telegram-bot-sync:
