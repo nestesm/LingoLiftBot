@@ -2,6 +2,7 @@ import asyncio
 import logging
 import sys
 from os import getenv
+from dotenv import load_dotenv
 
 from aiogram import Bot, Dispatcher, Router, types
 from aiogram.enums import ParseMode
@@ -10,6 +11,7 @@ from aiogram.types import Message
 from aiogram.utils.markdown import hbold
 
 # Bot token can be obtained via https://t.me/BotFather
+load_dotenv()
 TOKEN = getenv("TELEGRAM_API_TOKEN")
 
 # All handlers should be attached to the Router (or Dispatcher)
@@ -26,7 +28,7 @@ async def command_start_handler(message: Message) -> None:
     # and the target chat will be passed to :ref:`aiogram.methods.send_message.SendMessage`
     # method automatically or call API method directly via
     # Bot instance: `bot.send_message(chat_id=message.chat.id, ...)`
-    await message.answer(f"Hello, test{hbold(message.from_user.full_name)}!")
+    await message.answer(f"Hello, {hbold(message.from_user.full_name)}!")
 
 
 @dp.message()
